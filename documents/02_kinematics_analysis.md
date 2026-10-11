@@ -6,12 +6,12 @@
 
 | 变量 | 对应构件 | 尺寸 |
 | --- | --- | ---: |
-| $x_1$ | 曲柄 | 100.00 mm |
-| $x_2$ | 连杆 | 385.65 mm |
-| $x_3$ | 摇杆 | 230.19 mm |
-| $x_4$ | 机架 | 457.76 mm |
+| $`x_1`$ | 曲柄 | 100.00 mm |
+| $`x_2`$ | 连杆 | 385.65 mm |
+| $`x_3`$ | 摇杆 | 230.19 mm |
+| $`x_4`$ | 机架 | 457.76 mm |
 
-程序入口：[`design_link_lengths.m`](../code/design_link_lengths.m)，内部调用 [`solve_link_length_ratios.m`](../code/solve_link_length_ratios.m)。尺寸综合采用三组曲柄与摇杆角度样本，当前程序中的偏置参数为 $\phi_0=72^\circ$；另有参数记录为 $67^\circ$。两者不一致，需要结合 CAD 构型和角度定义统一。
+程序入口：[`design_link_lengths.m`](../code/design_link_lengths.m)，内部调用 [`solve_link_length_ratios.m`](../code/solve_link_length_ratios.m)。尺寸综合采用三组曲柄与摇杆角度样本，当前程序中的偏置参数为 $`\phi_0=72^\circ`$；另有参数记录为 $`67^\circ`$。两者不一致，需要结合 CAD 构型和角度定义统一。
 
 当前运动学程序的机架值另有 **457.79 mm**，与尺寸综合的 457.76 mm 不完全相同。该差异暂作为待核对参数保留，尚不能据此确定 CAD 模型的统一机架尺寸。
 
@@ -19,7 +19,7 @@
 
 ## 2. 四杆运动学模型
 
-设曲柄、连杆和摇杆相对统一参考轴的角度为 $\theta_1$、$\theta_2$、$\theta_3$。单侧平面四杆闭环关系可写为：
+设曲柄、连杆和摇杆相对统一参考轴的角度为 $`\theta_1`$、$`\theta_2`$、$`\theta_3`$。单侧平面四杆闭环关系可写为：
 
 ```math
 \begin{aligned}
@@ -50,7 +50,7 @@ x_2\cos\theta_2 & -x_3\cos\theta_3
 d^2=x_1^2+x_4^2-2x_1x_4\cos\theta_1.
 ```
 
-按当前 MATLAB 程序的几何约定，首先使用余弦定理计算杆件夹角 $\alpha_3$，再取锐角传动角 $\gamma=\min(\alpha_3,\pi-\alpha_3)$，压力角为 $\alpha=\pi/2-\gamma$。
+按当前 MATLAB 程序的几何约定，首先使用余弦定理计算杆件夹角 $`\alpha_3`$，再取锐角传动角 $`\gamma=\min(\alpha_3,\pi-\alpha_3)`$，压力角为 $`\alpha=\pi/2-\gamma`$。
 
 ![压力角与传动角计算曲线](../results/images/pressure_transmission_angles.jpg)
 
@@ -60,7 +60,7 @@ d^2=x_1^2+x_4^2-2x_1x_4\cos\theta_1.
 
 ## 4. 双侧机构运动与相对运动
 
-在当前 MATLAB 示例中，第一曲柄转角按 $0^\circ$ 至 $360^\circ$ 扫描，曲柄输入角速度设为 **100 rad/s**，绘制两侧杆件角位移、角速度和角加速度：
+在当前 MATLAB 示例中，第一曲柄转角按 $`0^\circ`$ 至 $`360^\circ`$ 扫描，曲柄输入角速度设为 **100 rad/s**，绘制两侧杆件角位移、角速度和角加速度：
 
 ![双侧机构运动学计算](../results/images/linkage_kinematics.jpg)
 
@@ -94,6 +94,6 @@ d^2=x_1^2+x_4^2-2x_1x_4\cos\theta_1.
 - 以 SolidWorks 运动研究导出翼根角度并与 MATLAB 同步比较；
 - 检查全行程几何闭合、装配分支、构件碰撞和实际左右同步误差；
 - 将示例运动学角速度换算到真实蜗杆驱动工况；
-- 将 457.76/457.79 mm、103°/106°、$\phi_0=67^\circ/72^\circ$ 等差异统一到最终参数版本。
+- 将 457.76/457.79 mm、103°/106°、$`\phi_0=67^\circ/72^\circ`$ 等差异统一到最终参数版本。
 
 下一篇见：[03 动力学分析报告](03_dynamics_analysis.md)。
