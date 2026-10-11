@@ -21,16 +21,16 @@
 
 设曲柄、连杆和摇杆相对统一参考轴的角度为 $\theta_1$、$\theta_2$、$\theta_3$。单侧平面四杆闭环关系可写为：
 
-$$
+```math
 \begin{aligned}
 x_1\cos\theta_1+x_2\cos\theta_2 &=x_4+x_3\cos\theta_3,\\
 x_1\sin\theta_1+x_2\sin\theta_2 &=x_3\sin\theta_3.
 \end{aligned}
-$$
+```
 
 对闭环方程求时间导数，得到从动杆角速度的线性方程：
 
-$$
+```math
 \begin{bmatrix}
 -x_2\sin\theta_2 & x_3\sin\theta_3\\
 x_2\cos\theta_2 & -x_3\cos\theta_3
@@ -38,7 +38,7 @@ x_2\cos\theta_2 & -x_3\cos\theta_3
 \begin{bmatrix}\omega_2\\\omega_3\end{bmatrix}
 =
 \omega_1\begin{bmatrix}x_1\sin\theta_1\\-x_1\cos\theta_1\end{bmatrix}.
-$$
+```
 
 再次求时间导数可求角加速度。实际 MATLAB 计算函数为 [`solve_side_a_kinematics.m`](../code/solve_side_a_kinematics.m) 与 [`solve_side_b_kinematics.m`](../code/solve_side_b_kinematics.m)。两侧模型使用类似计算框架，但需要单独规定角度方向、对称映射及曲柄相位。
 
@@ -46,9 +46,9 @@ $$
 
 连接固定铰点与曲柄末端得到辅助对角线，其长度平方为：
 
-$$
+```math
 d^2=x_1^2+x_4^2-2x_1x_4\cos\theta_1.
-$$
+```
 
 按当前 MATLAB 程序的几何约定，首先使用余弦定理计算杆件夹角 $\alpha_3$，再取锐角传动角 $\gamma=\min(\alpha_3,\pi-\alpha_3)$，压力角为 $\alpha=\pi/2-\gamma$。
 
@@ -68,10 +68,10 @@ $$
 
 相对角位移与角速度可通过对应绝对运动量相减，例如：
 
-$$
+```math
 \theta_{13}=\theta_1-\theta_3,\qquad
 \omega_{13}=\omega_1-\omega_3.
-$$
+```
 
 ![机构相对运动计算](../results/images/relative_linkage_kinematics.jpg)
 
