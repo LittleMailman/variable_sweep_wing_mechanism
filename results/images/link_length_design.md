@@ -1,9 +1,9 @@
 # 连杆尺寸综合计算结果
 
-**源程序：** [`design_link_lengths.m`](../code/matlab/design_link_lengths.m)  
-**计算函数：** [`solve_link_length_ratios.m`](../code/matlab/solve_link_length_ratios.m)
+**源程序：** [`design_link_lengths.m`](../../code/design_link_lengths.m)  
+**计算函数：** [`solve_link_length_ratios.m`](../../code/solve_link_length_ratios.m)
 
-根据此前 MATLAB 命令窗口的实际输出整理：
+根据 MATLAB 尺寸综合程序的输出整理：
 
 | 参数 | 无量纲长度比 | 计算长度 |
 |---|---:|---:|
