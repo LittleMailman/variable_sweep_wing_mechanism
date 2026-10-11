@@ -1,8 +1,8 @@
 # MATLAB 机构设计与分析代码
 
-本目录收录可变后掠翼机构设计和分析所用的 MATLAB 计算程序，包括参数化机构演示、杆长综合、压力角与传动角、双侧机构运动学、摇杆角度，以及平面受力与动力学分析。程序统一存放于 `code/`。
+本目录收录可变后掠翼机构设计和分析所用的 MATLAB 计算程序，包含杆长综合、压力角与传动角、双侧机构运动学、摇杆角度，以及平面受力与动力学分析。程序统一存放于 `code/`。
 
-> **状态说明**：原有 7 个分析入口已在 MATLAB 中运行并生成输出；新增的 M1 参数化演示尚未完成 MATLAB 实测验收，目前属于**运行和可视化初步验证**，不是结构性能、动力学模型或 SolidWorks 装配关系的最终工程验证。**本次打包未修改任何计算公式或程序数值**。
+> **状态说明**：7 个分析入口已在 MATLAB 中运行并生成输出；目前属于**运行和可视化初步验证**，不是结构性能、动力学模型或 SolidWorks 装配关系的最终工程验证。
 
 ## 目录和入口
 
@@ -10,7 +10,6 @@
 
 | 运行入口 | 作用 | 直接调用的辅助函数 | 对应结果 |
 |---|---|---|---|
-| `parameterized_fourbar_demo.m` | **M1 单侧四杆几何闭合与运动动画（待 MATLAB 实测）** | 内置求解函数 | 运行后生成机构和摇杆响应图，不预置结果文件 |
 | `design_link_lengths.m` | 三组设计角度下的连杆尺寸综合 | `solve_link_length_ratios.m` | [连杆尺寸结果](../results/images/link_length_design.md) |
 | `plot_pressure_transmission_angles.m` | 压力角与传动角随曲柄角变化 | `compute_pressure_transmission_angles.m` | [压力角与传动角](../results/images/pressure_transmission_angles.jpg) |
 | `plot_linkage_kinematics.m` | 双侧角位移、角速度、角加速度 | `solve_side_a_kinematics.m`, `solve_side_b_kinematics.m` | [运动学曲线](../results/images/linkage_kinematics.jpg) |
@@ -19,16 +18,13 @@
 | `plot_joint_reaction.m` | 简化外载荷下的反力与曲柄力矩计算曲线 | `compute_joint_reaction.m` | [运动反力](../results/images/joint_reaction.jpg) |
 | `analyze_linkage_joint_forces.m` | 9×9 平面平衡方程下的关节反力与驱动力矩 | 无外部 `.m` 依赖 | [动力学与关节反力](../results/images/linkage_joint_forces.jpg) |
 
-**共计 14 个 MATLAB 文件：8 个入口程序、6 个独立辅助函数。**新演示文件另含 1 个局部函数，不计入独立文件数。不建议分开放置而不配置 MATLAB 搜索路径。
+**共计 13 个 MATLAB 文件：7 个入口脚本、6 个辅助函数。**不建议分开放置而不配置 MATLAB 搜索路径。
 
 ## 运行方式
 
 MATLAB 中打开项目内的 `code` 目录，并依次执行（每个脚本可以独立运行）：
 
 ```matlab
-clear; clc; close all;
-parameterized_fourbar_demo  % M1 新入口（待 MATLAB 实测）
-
 clear; clc; close all;
 design_link_lengths
 
@@ -53,17 +49,6 @@ analyze_linkage_joint_forces
 
 提示：部分绘图脚本末尾含 `hold on`，应在不同程序之间执行 `close all`，避免叠图。MATLAB 当前工作目录须包含对应的辅助函数文件。
 
-
-## M1 参数化四杆演示
-
-[parameterized_fourbar_demo.m](parameterized_fourbar_demo.m) 是独立的单侧平面四杆机构几何演示，不会改写现有计算曲线。它支持修改以下参数：
-
-- \`cfg.crank_mm\`、\`cfg.coupler_mm\`、\`cfg.rocker_mm\`、\`cfg.ground_mm\`：四杆长度（mm）。
-- \`cfg.phase_deg\`：曲柄输入的初始相位（deg）。
-- \`cfg.branch\`：四杆装配分支（+1 或 -1）。
-- \`cfg.animate\`、\`cfg.samples\`：控制动画和采样。
-
-程序采用圆交点求解和几何闭合残差检查。**摇杆角仅表示数学模型的机构运动，不等于真实机翼后掠角；该入口尚需在本机 MATLAB 中运行和对照 CAD 验证。** 双侧机翼同步、传动比及载荷耦合不在此演示的求解范围内。
 
 ## 示例参数与单位
 
