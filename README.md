@@ -45,11 +45,10 @@ A variable-sweep-wing linkage mechanism with SolidWorks models, MATLAB analysis 
 
 ![双侧机构运动学计算曲线](results/images/linkage_kinematics.jpg)
 
-仓库包含 **8 个 MATLAB 入口、6 个独立辅助函数，共 14 个 MATLAB 文件**。其中 7 个入口已有分析结果，新增 M1 参数化机构演示尚需 MATLAB 实测验收。主要程序如下：
+仓库包含 **7 个分析入口、6 个辅助函数，共 13 个 MATLAB 文件**。主要分析程序与结果如下：
 
 | 分析内容 | MATLAB 入口 | 结果 |
 | --- | --- | --- |
-| 参数化四杆动画 | [parameterized_fourbar_demo.m](code/parameterized_fourbar_demo.m) | 运行后生成机构及摇杆响应图（待验收） |
 | 连杆尺寸综合 | [design_link_lengths.m](code/design_link_lengths.m) | [计算记录](results/images/link_length_design.md) |
 | 压力角与传动角 | [plot_pressure_transmission_angles.m](code/plot_pressure_transmission_angles.m) | [查看曲线](results/images/pressure_transmission_angles.jpg) |
 | 双侧机构运动学 | [plot_linkage_kinematics.m](code/plot_linkage_kinematics.m) | [查看曲线](results/images/linkage_kinematics.jpg) |
@@ -71,7 +70,7 @@ variable_sweep_wing_mechanism/
 │   └── 可变后掠翼机构.zip           # SolidWorks 模型压缩包
 ├── code/
 │   ├── README.md
-│   └── *.m                       # 8 个入口 + 6 个独立辅助函数
+│   └── *.m                       # 7 个分析入口 + 6 个辅助函数
 ├── documents/
 │   ├── README.md
 │   ├── 01_mechanism_design.md
@@ -86,7 +85,7 @@ variable_sweep_wing_mechanism/
 | 目录 | 提供内容 |
 | --- | --- |
 | [model/](model/) | SolidWorks 模型 ZIP：21 个零件、2 个装配体、1 个工程图 |
-| [code/](code/) | 14 个 MATLAB 程序及运行说明 |
+| [code/](code/) | 13 个 MATLAB 程序及运行说明 |
 | [documents/](documents/) | 机构设计、运动学分析、动力学分析共 3 份技术报告 |
 | [results/images/](results/images/) | 6 张 MATLAB 曲线、3 张机构构型图及计算记录 |
 | [results/videos/](results/videos/) | 4 段机构与传动运动演示 |
@@ -114,9 +113,6 @@ cd variable_sweep_wing_mechanism
 
 ```matlab
 clear; clc; close all;
-parameterized_fourbar_demo  % M1 新入口（尚待 MATLAB 实测）
-
-close all;
 design_link_lengths
 
 close all;
@@ -168,7 +164,7 @@ MATLAB 运动学示例输入角速度为 100 rad/s，动态静力分析示例使
 
 ## 项目状态与验证范围
 
-**已有成果：** SolidWorks 机械模型、运动演示、MATLAB 分析代码、计算图像及对应技术文档；M1 已开始引入独立参数化四杆几何演示入口。
+**已有成果：** SolidWorks 机械模型、运动演示、MATLAB 分析代码、计算图像及对应技术文档。
 
 **仍需验证：** CAD 与 MATLAB 参数一致性、双侧运动关系、机构全行程干涉、实际齿轮传动比、质量及转动惯量、真实外载荷和驱动能力。当前反力与力矩曲线不能直接作为电机、轴承或结构强度的选型依据。
 
