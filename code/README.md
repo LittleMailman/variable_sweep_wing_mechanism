@@ -6,23 +6,23 @@
 
 ## 目录和入口
 
-所有 `.m` 文件放在 [`matlab/`](./matlab/) 同一级目录，直接将其添加为 MATLAB 当前工作文件夹即可运行。MATLAB 版本、第三方工具箱需求尚未做跨版本测试；从现有源码看主要使用基础数值计算及绘图函数。
+所有 `.m` 文件放在同一级目录，直接将其添加为 MATLAB 当前工作文件夹即可运行。MATLAB 版本、第三方工具箱需求尚未做跨版本测试；从现有源码看主要使用基础数值计算及绘图函数。
 
 | 运行入口 | 作用 | 直接调用的辅助函数 | 对应结果 |
 |---|---|---|---|
-| `design_link_lengths.m` | 三组设计角度下的连杆尺寸综合 | `solve_link_length_ratios.m` | [连杆尺寸结果](../results/link_length_design.md) |
-| `plot_pressure_transmission_angles.m` | 压力角与传动角随曲柄角变化 | `compute_pressure_transmission_angles.m` | [压力角与传动角](../results/pressure_transmission_angles.jpg) |
-| `plot_linkage_kinematics.m` | 双侧角位移、角速度、角加速度 | `solve_side_a_kinematics.m`, `solve_side_b_kinematics.m` | [运动学曲线](../results/linkage_kinematics.jpg) |
-| `plot_relative_linkage_kinematics.m` | 双侧相对角位移、角速度、角加速度 | `solve_side_a_kinematics.m`, `solve_side_b_kinematics.m` | [相对运动曲线](../results/relative_linkage_kinematics.jpg) |
-| `plot_rocker_angle_response.m` | 两侧摇杆角度响应 | `compute_dual_rocker_angles.m` | [双侧摇杆角度](../results/dual_rocker_angles.jpg) |
-| `plot_joint_reaction.m` | 简化外载荷下的反力与曲柄力矩计算曲线 | `compute_joint_reaction.m` | [运动反力](../results/joint_reaction.jpg) |
-| `analyze_linkage_joint_forces.m` | 9×9 平面平衡方程下的关节反力与驱动力矩 | 无外部 `.m` 依赖 | [动力学与关节反力](../results/linkage_joint_forces.jpg) |
+| `design_link_lengths.m` | 三组设计角度下的连杆尺寸综合 | `solve_link_length_ratios.m` | [连杆尺寸结果](../results/images/link_length_design.md) |
+| `plot_pressure_transmission_angles.m` | 压力角与传动角随曲柄角变化 | `compute_pressure_transmission_angles.m` | [压力角与传动角](../results/images/pressure_transmission_angles.jpg) |
+| `plot_linkage_kinematics.m` | 双侧角位移、角速度、角加速度 | `solve_side_a_kinematics.m`, `solve_side_b_kinematics.m` | [运动学曲线](../results/images/linkage_kinematics.jpg) |
+| `plot_relative_linkage_kinematics.m` | 双侧相对角位移、角速度、角加速度 | `solve_side_a_kinematics.m`, `solve_side_b_kinematics.m` | [相对运动曲线](../results/images/relative_linkage_kinematics.jpg) |
+| `plot_rocker_angle_response.m` | 两侧摇杆角度响应 | `compute_dual_rocker_angles.m` | [双侧摇杆角度](../results/images/dual_rocker_angles.jpg) |
+| `plot_joint_reaction.m` | 简化外载荷下的反力与曲柄力矩计算曲线 | `compute_joint_reaction.m` | [运动反力](../results/images/joint_reaction.jpg) |
+| `analyze_linkage_joint_forces.m` | 9×9 平面平衡方程下的关节反力与驱动力矩 | 无外部 `.m` 依赖 | [动力学与关节反力](../results/images/linkage_joint_forces.jpg) |
 
-**共计 13 个文件：7 个入口脚本、6 个辅助函数。** 函数和入口均在 `matlab/` 下，不建议分开放置而不配置 MATLAB 搜索路径。
+**共计 13 个文件：7 个入口脚本、6 个辅助函数。**不建议分开放置而不配置 MATLAB 搜索路径。
 
 ## 运行方式
 
-MATLAB 中打开项目内的 `code/matlab/` 目录，并依次执行（每个脚本可以独立运行）：
+MATLAB 中打开项目内的 `code` 目录，并依次执行（每个脚本可以独立运行）：
 
 ```matlab
 clear; clc; close all;
@@ -71,4 +71,4 @@ analyze_linkage_joint_forces
 4. 当前程序尚未使用 SolidWorks 导出的真实质量、转动惯量、质心及传动效率数据。
 5. 图表中某些角度和力矩单位是旧程序标注，**图像属于当前代码输出的历史示例记录，不作为最终工程性能指标**。
 
-更详细的输出和验证边界参见 [`results/README.md`](../results/README.md) 和 [`results/VALIDATION_NOTES.md`](../results/VALIDATION_NOTES.md)。
+更详细的输出和验证边界参见 [`results/README.md`](../results/images/README.md) 和 [`results/VALIDATION_NOTES.md`](../results/images/VALIDATION_NOTES.md)。
