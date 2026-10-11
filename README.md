@@ -86,7 +86,7 @@ variable_sweep_wing_mechanism/
 | --- | --- |
 | [model/](model/) | SolidWorks 模型 ZIP：21 个零件、2 个装配体、1 个工程图 |
 | [code/](code/) | 13 个 MATLAB 程序及运行说明 |
-| [documents/](documents/) | 机构设计、运动学分析、动力学分析共 3 份技术报告 |
+| [documents/](documents/) | 3 份技术分析报告、文献综述与结构方案选择，共 5 篇文档 |
 | [results/images/](results/images/) | 6 张 MATLAB 曲线、3 张机构构型图及计算记录 |
 | [results/videos/](results/videos/) | 4 段机构与传动运动演示 |
 
@@ -161,6 +161,8 @@ MATLAB 运动学示例输入角速度为 100 rad/s，动态静力分析示例使
 - [01 机构设计报告](documents/01_mechanism_design.md)：方案选型、机械结构和传动系统。
 - [02 运动学分析报告](documents/02_kinematics_analysis.md)：尺寸综合、四杆模型、传动角及双侧运动。
 - [03 动力学分析报告](documents/03_dynamics_analysis.md)：受力图、运动反力、动态静力分析与计算边界。
+- [04 可变后掠翼技术文献综述](documents/04_literature_review.md)：研究背景、机构方向与参考文献。
+- [05 可变后掠翼结构方案比较与选择](documents/05_mechanism_selection.md)：候选机构比较、结构组成与选型依据。
 
 ## 项目状态与验证范围
 
