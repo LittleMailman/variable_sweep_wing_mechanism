@@ -2,7 +2,7 @@
 
 ## 1. 尺度综合及输入参数
 
-为分析机构运动，将一侧简化为四杆机构，并以曲柄长度为尺度基准进行杆长综合。原课程说明书和当前 MATLAB 尺寸综合示例输出为：
+为分析机构运动，将单侧机构简化为平面四杆机构，以曲柄长度为尺度基准进行杆长综合。当前 MATLAB 尺寸综合程序输出的参数如下：
 
 | 变量 | 对应构件 | 尺寸 |
 | --- | --- | ---: |
@@ -11,9 +11,9 @@
 | $x_3$ | 摇杆 | 230.19 mm |
 | $x_4$ | 机架 | 457.76 mm |
 
-程序入口：[`design_link_lengths.m`](../code/design_link_lengths.m)，内部调用 [`solve_link_length_ratios.m`](../code/solve_link_length_ratios.m)。原设计中使用三组曲柄/摇杆角度样本进行尺寸综合，当前上传版本的偏置参数 $\phi_0=72^\circ$；课程说明书部分旧附录出现 $67^\circ$，需按最终 CAD 对应的设计版本核对。
+程序入口：[`design_link_lengths.m`](../code/design_link_lengths.m)，内部调用 [`solve_link_length_ratios.m`](../code/solve_link_length_ratios.m)。尺寸综合采用三组曲柄与摇杆角度样本，当前程序中的偏置参数为 $\phi_0=72^\circ$；另有参数记录为 $67^\circ$。两者不一致，需要结合 CAD 构型和角度定义统一。
 
-当前运动学程序的机架值另有 **457.79 mm**，与尺寸综合的 457.76 mm 不完全相同。两者暂作为历史版本差异保留，不应认为 CAD 正式值已确定。
+当前运动学程序的机架值另有 **457.79 mm**，与尺寸综合的 457.76 mm 不完全相同。该差异暂作为待核对参数保留，尚不能据此确定 CAD 模型的统一机架尺寸。
 
 按这组示例杆长，最短杆加最长杆为 557.76 mm，其余两杆之和为 615.84 mm，满足 Grashof 长度条件；具体运动类型还需考虑固定杆和机构装配构型。
 
@@ -50,7 +50,7 @@ $$
 d^2=x_1^2+x_4^2-2x_1x_4\cos\theta_1.
 $$
 
-按原程序的几何约定，首先使用余弦定理计算杆件夹角 $\alpha_3$，再取锐角传动角 $\gamma=\min(\alpha_3,\pi-\alpha_3)$，压力角为 $\alpha=\pi/2-\gamma$。
+按当前 MATLAB 程序的几何约定，首先使用余弦定理计算杆件夹角 $\alpha_3$，再取锐角传动角 $\gamma=\min(\alpha_3,\pi-\alpha_3)$，压力角为 $\alpha=\pi/2-\gamma$。
 
 ![压力角与传动角计算曲线](../results/images/pressure_transmission_angles.jpg)
 
@@ -79,11 +79,11 @@ $$
 
 ## 5. 双侧摇杆响应与曲柄夹角
 
-历史课程说明书使用过 **106°** 作为两侧曲柄夹角的分析设定，同时讨论过约 **94.24°** 的极限/死点构型及考虑实体结构后的 **103°**。因此，在明确 CAD 终版前，不能将单一角度写成最终设计数值。
+双侧曲柄分析采用过 **106°** 的相位设定；另有约 **94.24°** 的极限/死点几何构型，以及考虑实体布置后的 **103°** 配置。三个角度对应不同分析条件，不能直接互换，需在 CAD 构型和角度参考系统一后确定最终计算参数。
 
 ![双侧摇杆角度计算](../results/images/dual_rocker_angles.jpg)
 
-对应入口：[`plot_rocker_angle_response.m`](../code/plot_rocker_angle_response.m)，调用 [`compute_dual_rocker_angles.m`](../code/compute_dual_rocker_angles.m)。旧版求根式曾存在多余的内层平方根，当前上传版本采用单层判别式平方根；绘图可以执行，但摇杆解的装配分支及角度零位仍须校验。
+对应入口：[`plot_rocker_angle_response.m`](../code/plot_rocker_angle_response.m)，调用 [`compute_dual_rocker_angles.m`](../code/compute_dual_rocker_angles.m)。摇杆角求解采用判别式的单层平方根；当前程序可生成曲线，但求解分支及角度零位仍须与机构装配体校验。
 
 **注意：** 图中的摇杆角度不是未经转换就可使用的“机翼实际后掠角”。应先统一左右翼参考轴和镜像方向，再建立摇杆到翼根后掠角的映射。
 
