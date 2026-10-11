@@ -31,23 +31,23 @@
 
 按达朗贝尔法，将杆件惯性力和惯性力偶写为：
 
-$$
+```math
 \mathbf F_{I,i}=-m_i\mathbf a_{G_i},\qquad
 M_{I,i}=-J_{G_i}\alpha_i.
-$$
+```
 
 针对单侧三根运动杆件，分别列出水平方向、竖直方向和力矩平衡，由此组成 9 个线性方程：
 
-$$
+```math
 \mathbf A(\theta_1)\mathbf C=\mathbf B(\theta_1),
-$$
+```
 
 其中未知量可按当前代码排序为：
 
-$$
+```math
 \mathbf C=[M_b,F_{R10x},F_{R10y},F_{R12x},F_{R12y},
-F_{R23x},F_{R23y},F_{R30x},F_{R30y}]^\mathsf T.
-$$
+F_{R23x},F_{R23y},F_{R30x},F_{R30y}]^{\mathsf{T}}.
+```
 
 计算入口：[`analyze_linkage_joint_forces.m`](../code/analyze_linkage_joint_forces.m)。当前程序已将几何长度统一为米，并加入几何闭合与数值检查；动力学方程、装配分支及力平衡符号仍需进行独立力学验证。
 
